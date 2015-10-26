@@ -9,8 +9,8 @@ FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 POST_DIR = 'posts'
-#FREEZER_DESTINATION = '..'
-FREEZER_DESTINATION_IGNORE = ['blog']
+FREEZER_DESTINATION = '..'
+FREEZER_DESTINATION_IGNORE = ['*']
 
 app = Flask(__name__)
 freezer = Freezer(app)
