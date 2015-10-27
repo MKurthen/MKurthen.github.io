@@ -17,11 +17,14 @@ freezer = Freezer(app)
 flatpages = FlatPages(app)
 app.config.from_object(__name__)
 
+@app.route("/")
+@app.route("/index")
+def index():
+    return posts()
+
 @app.route("/posts/")
 def posts():
     posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
-    with open('log', 'a') as f:
-        f.write(str(posts) + '\n' )
     posts.sort(key=lambda item:item['date'], reverse=False)
     return render_template('posts.html', posts=posts)
 
@@ -31,12 +34,8 @@ def post(name):
     #Tracer()()
     #path = path.strip('.md')
     freezer = Freezer(app)
-    with open('log', 'a') as f:
-        f.write(str(path) + '\n' )
     #post = flatpages.get(path)
     post = flatpages.get_or_404(path)
-    with open('log', 'a') as f:
-        f.write(str(post) + '\n' )
     return render_template('post.html', post=post)
 
 if __name__ == "__main__":

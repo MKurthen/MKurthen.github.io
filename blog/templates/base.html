@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
-    
-    
+    {% block extra_head %}{% endblock %}
+    {% block extra_scripts %}{% endblock %}
     -->
   </head>
 
@@ -30,7 +30,7 @@
             </a>
             <a class="brand" href="/">microblog</a>
               <ul class="nav">
-                  <li><a href="/index">Home</a></li>
+                  <li><a href="{{ url_for('index') }}">Home</a></li>
               </ul>
             <div class="nav-collapse collapse">
             </div>
@@ -38,14 +38,7 @@
         </div>
         <div class="row">
           <div class="span12">
-            
-
-    <a href="/posts/firstpost/">
-        Should it be YYYY-MM-DD or YYYY-DD-MM? My Thoughts
-    </a>
-    <small>2013-08-27</small>
-
-
+            {% block content %}{% endblock %}
           </div>
         </div>
       </div>  
